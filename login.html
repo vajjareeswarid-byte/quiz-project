@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#6a0dad,#8e44ad);
+    font-family:'Segoe UI',Arial;
+}
+
+.box{
+    background:white;
+    padding:40px;
+    border-radius:18px;
+    width:360px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+h2{
+    color:#6a0dad;
+}
+
+.input-group{
+    position:relative;
+    margin:15px 0;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:14px;
+}
+
+.toggle{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:14px;
+    color:#6a0dad;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#6a0dad;
+    color:white;
+    border:none;
+    border-radius:10px;
+    margin-top:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#4b0082;
+}
+
+a{
+    display:block;
+    margin-top:15px;
+    color:#6a0dad;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Login</h2>
+
+<form method="post">
+
+<input type="email" name="email" placeholder="Email" required>
+
+<div class="input-group">
+    <input type="password" id="loginPassword" name="password" placeholder="Password" required>
+    <span class="toggle" onclick="toggleLogin()">👁</span>
+</div>
+
+<button type="submit">Login</button>
+
+</form>
+
+<a href="/register">Create Account</a>
+</div>
+
+<script>
+function toggleLogin(){
+    var pass = document.getElementById("loginPassword");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

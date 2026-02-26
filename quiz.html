@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    background:#f4f0fa;
+    font-family:'Segoe UI',Arial;
+}
+
+/* Header */
+.header{
+    background:linear-gradient(135deg,#6a0dad,#8e44ad);
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+/* Container */
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+/* Question Card */
+.card{
+    background:white;
+    padding:25px;
+    margin-bottom:25px;
+    border-radius:18px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+.question{
+    font-weight:600;
+    margin-bottom:15px;
+    color:#6a0dad;
+}
+
+/* Options */
+.option{
+    margin:8px 0;
+    display:flex;
+    align-items:center;
+}
+
+.option input{
+    margin-right:10px;
+    transform:scale(1.2);
+}
+
+/* Submit Button */
+.submit-btn{
+    width:100%;
+    padding:14px;
+    background:#6a0dad;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    background:#4b0082;
+    transform:translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Quiz</h2>
+</div>
+
+<div class="container">
+
+<form method="post">
+
+{% for q in questions %}
+<div class="card">
+
+    <div class="question">
+        {{ loop.index }}. {{ q.question }}
+    </div>
+
+    <div class="option">
+        <input type="radio" name="{{ q.id }}" value="{{ q.o1 }}" required>
+        {{ q.o1 }}
+    </div>
+
+    <div class="option">
+        <input type="radio" name="{{ q.id }}" value="{{ q.o2 }}">
+        {{ q.o2 }}
+    </div>
+
+    <div class="option">
+        <input type="radio" name="{{ q.id }}" value="{{ q.o3 }}">
+        {{ q.o3 }}
+    </div>
+
+    <div class="option">
+        <input type="radio" name="{{ q.id }}" value="{{ q.o4 }}">
+        {{ q.o4 }}
+    </div>
+
+</div>
+{% endfor %}
+
+<button type="submit" class="submit-btn">Submit Quiz</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

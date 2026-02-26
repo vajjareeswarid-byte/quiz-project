@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Unit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#6a0dad,#8e44ad);
+    font-family:'Segoe UI',Arial;
+}
+
+.box{
+    background:white;
+    padding:40px;
+    border-radius:18px;
+    width:400px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+h2{
+    margin-bottom:25px;
+    color:#6a0dad;
+}
+
+select,input{
+    width:100%;
+    padding:12px;
+    margin:15px 0;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+select:focus,input:focus{
+    border-color:#6a0dad;
+    outline:none;
+    box-shadow:0 0 6px rgba(106,13,173,0.5);
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:#6a0dad;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#4b0082;
+    transform:translateY(-2px);
+}
+
+.back{
+    display:block;
+    margin-top:20px;
+    text-decoration:none;
+    color:#6a0dad;
+    font-size:14px;
+}
+
+.back:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Add Unit</h2>
+
+    <form method="post">
+
+        <select name="subject_id" required>
+            <option value="">Select Subject</option>
+            {% for s in subjects %}
+            <option value="{{ s.id }}">{{ s.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="unit_name"
+               placeholder="Enter Unit Name" required>
+
+        <button type="submit">Add Unit</button>
+
+    </form>
+
+    <a href="/admin_panel" class="back">← Back to Admin Panel</a>
+</div>
+
+</body>
+</html>

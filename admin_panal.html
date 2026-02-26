@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,#6a0dad,#8e44ad);
+    font-family:'Segoe UI',Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    width:400px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+h2{
+    margin-bottom:30px;
+    color:#6a0dad;
+}
+
+.button{
+    display:block;
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border:none;
+    border-radius:10px;
+    background:#6a0dad;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#4b0082;
+    transform:translateY(-3px);
+}
+
+.logout{
+    background:#e74c3c;
+}
+
+.logout:hover{
+    background:#c0392b;
+}
+
+.footer{
+    margin-top:25px;
+    font-size:13px;
+    color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Admin Dashboard</h2>
+
+    <a href="/add_subject" class="button">➕ Add Subject</a>
+    <a href="/manage_subjects" class="button">📚 Manage Subjects</a>
+    <a href="/add_unit" class="button">📘 Add Unit</a>
+    <a href="/add_quiz" class="button">📝 Add Quiz</a>
+    <a href="/view_results" class="button">📊 View Results</a>
+
+    <a href="/logout" class="button logout">🚪 Logout</a>
+
+    <div class="footer">
+        Online Quiz & Study Material Management System
+    </div>
+</div>
+
+</body>
+</html>

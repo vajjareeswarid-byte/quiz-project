@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advanced Results</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    font-family:Segoe UI;
+    background:#f4f6fb;
+    padding:30px;
+}
+
+h2{
+    text-align:center;
+}
+
+/* search */
+.search{
+    width:300px;
+    padding:10px;
+    display:block;
+    margin:20px auto;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+/* table */
+table{
+    width:95%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+th,td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+th{
+    background:#6a5acd;
+    color:white;
+}
+
+tr:hover{
+    background:#f1f1ff;
+}
+
+/* topper card */
+.topper{
+    width:300px;
+    margin:20px auto;
+    background:#6a5acd;
+    color:white;
+    padding:15px;
+    text-align:center;
+    border-radius:12px;
+    font-size:18px;
+}
+
+/* chart */
+.chart-box{
+    width:80%;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<h2>Advanced Results Dashboard</h2>
+
+<!-- TOPPER -->
+<div class="topper">
+🏆 Topper: {{ topper.name }} ({{ topper.score }})
+</div>
+
+<!-- SEARCH -->
+<input class="search" placeholder="Search student..." onkeyup="searchStudent(this.value)">
+
+<!-- TABLE -->
+<table id="table">
+<tr>
+<th>Name</th>
+<th>Subject</th>
+<th>Score</th>
+<th>Total</th>
+<th>Date</th>
+</tr>
+
+{% for r in results %}
+<tr>
+<td>{{r.student}}</td>
+<td>{{r.subject}}</td>
+<td>{{r.score}}</td>
+<td>{{r.total}}</td>
+<td>{{r.date}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<!-- GRAPH -->
+<div class="chart-box">
+<canvas id="chart"></canvas>
+</div>
+
+<script>
+function searchStudent(name){
+let rows=document.querySelectorAll("#table tr");
+
+rows.forEach((row,i)=>{
+if(i===0)return;
+row.style.display=row.innerText.toLowerCase().includes(name.toLowerCase())
+?"":"none";
+});
+}
+
+// GRAPH DATA
+const labels=[
+{% for r in results %}
+"{{r.student}}",
+{% endfor %}
+];
+
+const scores=[
+{% for r in results %}
+{{r.score}},
+{% endfor %}
+];
+
+new Chart(document.getElementById("chart"),{
+type:"bar",
+data:{
+labels:labels,
+datasets:[{
+label:"Scores",
+data:scores
+}]
+},
+options:{scales:{y:{beginAtZero:true}}}
+});
+</script>
+
+</body>
+</html>
